@@ -17,12 +17,13 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 
 //import routes
-import healthCheckRouter from "./routes/healthCheck.routes.js";
 
+// import healthCheckRouter from "./routes/healthCheck.routes.js";
+import routeApi from "./routeApi.js";
 
 //routes
-
- app.use("/api/v1/healthcheck", healthCheckRouter);
+app.use("/", routeApi);
+// app.use("/api/v1/healthcheck", healthCheckRouter);
 
 export { app }; // uses if we use type modelue.js
 // module.exports = app; // uses when type is common.js
