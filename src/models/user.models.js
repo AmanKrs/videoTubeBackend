@@ -60,11 +60,11 @@ const userSchema = new Schema(
 
 userSchema.pre("save", async function (next) {
   //checking if password is modified or not
-  if (!this.modified("password")) {
-    return next();
-  }
+  //fixed ismodifed function 
+  if (!this.isModified("password")) return next();
+  
   //encrypting the password
-  this.password = bycrpt.hash(this.password, 10);
+  this.password = await bycrpt.hash(this.password, 10);
   next();
 });
 
